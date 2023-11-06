@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스와이퍼 변수값만 바꿔서 커스터마이징하기</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <style>
+        .swiper {
+            margin-bottom: 100px;
+        }
+
+        .swiper-slide {
+            height: 500px;
+            background-color: #ccc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 50px;
+        }
+
+        #mainSwiper .swiper-slide {
+            opacity: 0.5;
+            transition: 0.5s;
+        }
+
+        #mainSwiper .swiper-slide-active {
+            opacity: 1;
+        }
+
+        #mainSwiper .swiper-slide span {
+
+            transform: translateY(100%);
+            transition: 0.5s;
+        }
+
+        #mainSwiper .swiper-slide-active span {
+
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 자동롤링 / 하나씩  / 좌우 / 4초마다 / 페이지네이션 / 앞뒤버튼생략 -->
+    <div class="swiper" id="mainSwiper">
+
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <span>텍스트</span>
+            </div>
+            <div class="swiper-slide">
+                <span>텍스트</span>
+            </div>
+            <div class="swiper-slide">
+                <span>텍스트</span>
+            </div>
+            <div class="swiper-slide">
+                <span>텍스트</span>
+            </div>
+            <div class="swiper-slide">
+                <span>텍스트</span>
+            </div>
+            <div class="swiper-slide">
+                <span>텍스트</span>
+            </div>
+
+        </div>
+
+        <div class="swiper-pagination"></div>
+    </div>
+
+    <!-- 자동롤링 / 센터모드 /  1.8  / 좌우 / 2초마다 / 페이지네이션 / 앞뒤버튼 -->
+    <div class="swiper" id="centerSwiper">
+
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">Slide 1</div>
+            <div class="swiper-slide">Slide 2</div>
+            <div class="swiper-slide">Slide 3</div>
+            <div class="swiper-slide">Slide 1</div>
+            <div class="swiper-slide">Slide 2</div>
+            <div class="swiper-slide">Slide 3</div>
+        </div>
+
+        <div class="swiper-pagination"></div>
+
+
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+
+    </div>
+    <script>
+        const swiper = new Swiper('#mainSwiper.swiper', {
+
+            loop: true,
+            pagination: {
+                el: '#mainSwiper .swiper-pagination',
+            },
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            centeredSlides: true,
+            slidesPerView: 3,
+
+        });
+
+        const swiper2 = new Swiper('#centerSwiper.swiper', {
+
+            loop: true,
+            pagination: {
+                el: '#centerSwiper .swiper-pagination',
+                clickable: true,
+            },
+            autoplay: {
+                delay: 2000,
+                disableOnInteraction: false,
+            },
+            centeredSlides: true,
+            slidesPerView: 1.8,
+            spaceBetween: 30,
+            navigation: {
+                nextEl: "#centerSwiper .swiper-button-next",
+                prevEl: "#centerSwiper .swiper-button-prev",
+            },
+
+        });
+
+
+    </script>
+</body>
+
+</html>
